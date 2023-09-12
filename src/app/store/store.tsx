@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import IssueReducer from './IssueReducer';
+import chatReducer from './chatReducer';
+import userReducer from 'app/store/user/userReducer';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 export const store = configureStore({
   reducer: {
-    issue: IssueReducer,
+    chat: chatReducer,
+    user: userReducer,
   },
 });
 export type RootState = ReturnType<typeof store.getState>;

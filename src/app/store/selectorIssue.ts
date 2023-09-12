@@ -1,3 +1,3 @@
 import { RootState } from './store';
 
-export const selectorIssue = (state: RootState) => state.issue;
+export const selectorGetChat = (state: RootState) => state.chat;
