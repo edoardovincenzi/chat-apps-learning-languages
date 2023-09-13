@@ -21,9 +21,8 @@ const Chat = () => {
         console.log(id);
         const chatHistory = res.items.filter(
           (item) =>
-            item.id_user_receive === (userInfo?.id ||
-            id) && item.id_user_send === (id ||
-            userInfo?.id)
+            ( item.id_user_receive === userInfo?.id || item.id_user_receive === id)
+             && ( item.id_user_send === id || item.id_user_send === userInfo?.id)
         );
         dispatch(addHistoryChat(chatHistory));
         console.log(res);
