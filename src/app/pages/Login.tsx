@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import { pb } from 'main';
 import { useAppDispatch } from 'app/store/store';
 import { addUser } from 'app/store/user/userReducer';
-import { User } from 'types/types';
+import { UserPB } from 'types';
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -18,7 +18,7 @@ const Login = () => {
         .collection('users')
         .authWithPassword(email, password);
 
-      dispatch(addUser(authData.record as User));
+      dispatch(addUser(authData.record as UserPB));
     }
   };
   return (

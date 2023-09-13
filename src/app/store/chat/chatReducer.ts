@@ -1,9 +1,10 @@
 // Part 1
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ChatPB } from 'types';
 
 // Part 2
 export interface IssueInitialState {
-  chat: string[];
+  chat: ChatPB[];
 }
 const initialState: IssueInitialState = {
   chat: [],
@@ -14,12 +15,18 @@ export const chatSlice = createSlice({
   name: 'chat',
   initialState,
   reducers: {
-    addChat: (state, action: PayloadAction<string>) => {
+    addChat: (state, action: PayloadAction<ChatPB>) => {
       state.chat = [...state.chat, action.payload];
+    },
+    addHistoryChat: (state, action: PayloadAction<ChatPB[]>) => {
+      state.chat = action.payload;
+    },
+    resetChat: (state) => {
+      state.chat = [];
     },
   },
 });
 
 // Part 4
-export const { addChat } = chatSlice.actions;
+export const { addChat, addHistoryChat, resetChat } = chatSlice.actions;
 export default chatSlice.reducer;

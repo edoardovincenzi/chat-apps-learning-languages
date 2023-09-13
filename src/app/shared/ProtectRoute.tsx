@@ -5,7 +5,7 @@ import { selectorGetUser } from 'app/store/user/userSelector';
 import { pb } from 'main';
 import { ReactNode, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { User } from 'types/types';
+import { UserPB } from 'types';
 
 const ProtectRoute = ({ children }: { children: ReactNode }) => {
   const navigate = useNavigate();
@@ -28,5 +28,5 @@ export default ProtectRoute;
 
 const refreshToken = async (dispatch: Dispatch) => {
   const authData = await pb.collection('users').authRefresh();
-  dispatch(addUser(authData.record as User));
+  dispatch(addUser(authData.record as UserPB));
 };

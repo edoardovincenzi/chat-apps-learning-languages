@@ -1,5 +1,4 @@
-import Home from 'app/pages/Home';
-import Login from 'app/pages/Login';
+import { Home, Login, Chat } from 'app/pages';
 import ProtectRoute from 'app/shared/ProtectRoute';
 import { createBrowserRouter } from 'react-router-dom';
 
@@ -23,5 +22,13 @@ export const router = createBrowserRouter([
   {
     path: '/login',
     element: <Login />,
+  },
+  {
+    path: '/chat/:id',
+    element: (
+      <ProtectRoute>
+        <Chat />
+      </ProtectRoute>
+    ),
   },
 ]);
