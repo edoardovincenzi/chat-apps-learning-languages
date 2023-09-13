@@ -13,9 +13,7 @@ function Home() {
 
   return (
     <>
-      <p>
-        Benvenuto nella chat {userInfo?.name} {userInfo?.id}
-      </p>
+      <p>Benvenuto nella chat {userInfo?.name}</p>
       <ListContacts />
     </>
   );

@@ -5,9 +5,11 @@ import { pb } from 'main';
 import { useAppDispatch } from 'app/store/store';
 import { addUser } from 'app/store/user/userReducer';
 import { UserPB } from 'types';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -19,6 +21,7 @@ const Login = () => {
         .authWithPassword(email, password);
 
       dispatch(addUser(authData.record as UserPB));
+      navigate('/');
     }
   };
   return (

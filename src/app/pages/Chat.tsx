@@ -1,4 +1,4 @@
-import { Button, TextField } from '@mui/material';
+import { Button, TextField, Typography } from '@mui/material';
 import { addChat, addHistoryChat } from 'app/store/chat/chatReducer';
 import { selectorGetChat } from 'app/store/chat/chatselector';
 import { useAppDispatch, useAppSelector } from 'app/store/store';
@@ -21,7 +21,9 @@ const Chat = () => {
         console.log(id);
         const chatHistory = res.items.filter(
           (item) =>
-            item.id_user_receive === userInfo?.id && item.id_user_send === id
+            item.id_user_receive === userInfo?.id ||
+            (id && item.id_user_send === id) ||
+            userInfo?.id
         );
         dispatch(addHistoryChat(chatHistory));
         console.log(res);
@@ -53,7 +55,16 @@ const Chat = () => {
         <Button>Back to contacts</Button>
       </Link>
       {chatArray.map((chat, index) => (
-        <p key={index}>{chat.text_chat}</p>
+        <Typography
+          key={index}
+          className={
+            chat.id_user_receive === userInfo?.id
+              ? 'bg-orange-300/60'
+              : 'bg-sky-300/60'
+          }
+        >
+          {chat.text_chat}
+        </Typography>
       ))}
       <TextField value={text} onChange={(e) => setText(e.target.value)} />
       <Button variant="contained" onClick={createChat}>

@@ -12,7 +12,9 @@ import { RouterProvider } from 'react-router-dom';
 import { router } from 'router';
 import PocketBase from 'pocketbase';
 
-export const pb = new PocketBase('https://chat-apps-learning-languages.pockethost.io');
+export const pb = new PocketBase(
+  'https://chat-apps-learning-languages.pockethost.io'
+);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
